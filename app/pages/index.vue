@@ -1,7 +1,7 @@
 <script setup>
 const api = useApi()
 const { data: me } = await useAsyncData('me', () => api.me())
-const { data: orders } = await useOrders()
+const { data: orders } = useOrders()
 const s = computed(() => stats(orders.value || []))
 </script>
 <template>

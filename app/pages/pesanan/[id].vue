@@ -1,6 +1,6 @@
 <script setup>
 const route = useRoute(), api = useApi()
-const { data: orders, refresh } = await useOrders()
+const { data: orders, refresh } = useOrders()
 const o = computed(() => (orders.value || []).find(x => String(x.id) === route.params.id))
 const busy = ref(false)
 async function setStatus(s) { busy.value = true; try { await api.setStatus(o.value.id, s); await refresh() } finally { busy.value = false } }

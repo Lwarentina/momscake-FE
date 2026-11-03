@@ -1,5 +1,5 @@
 <script setup>
-const { data: orders, pending } = await useOrders()
+const { data: orders, pending } = useOrders()
 const q = ref('')
 const list = computed(() => (orders.value || []).filter(o => `${o.nama} ${o.item} ${o.deskripsi}`.toLowerCase().includes(q.value.toLowerCase())))
 </script>
