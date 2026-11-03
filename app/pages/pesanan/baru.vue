@@ -24,7 +24,6 @@ const fields = [['nama', 'Nama customer', 'Siti'], ['no', 'No. telepon', '081234
       <label style="margin-top:0">Salin teks chat WhatsApp</label>
       <textarea v-model="chat" class="pill" placeholder="Tempel chat pelanggan di sini..." />
       <div class="row" style="margin-top:10px">
-        <button class="btn sm" style="background:var(--c1)" disabled title="Endpoint extract-chat hanya menerima teks">Screenshot</button>
         <button class="btn sm" :disabled="busy || !chat.trim()" @click="extract">✨ Ekstrak AI</button>
       </div>
       <p v-if="ai" class="lbl" style="margin-top:10px">✨ Terisi otomatis. Periksa &amp; koreksi bila perlu.</p>
