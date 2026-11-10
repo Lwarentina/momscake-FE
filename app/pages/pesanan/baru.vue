@@ -19,14 +19,14 @@ const fields = [['nama', 'Nama customer', 'Siti'], ['no', 'No. telepon', '081234
 </script>
 <template>
   <div>
-    <div class="top"><NuxtLink to="/" class="back">←</NuxtLink><h2>Pesanan Baru</h2></div>
+    <div class="top"><NuxtLink to="/" class="back" aria-label="Kembali"><AppIcon name="arrow-left" :size="20" /></NuxtLink><h2>Pesanan Baru</h2></div>
     <div class="card">
       <label style="margin-top:0">Salin teks chat WhatsApp</label>
       <textarea v-model="chat" class="pill" placeholder="Tempel chat pelanggan di sini..." />
-      <div class="row" style="margin-top:10px">
-        <button class="btn sm" :disabled="busy || !chat.trim()" @click="extract">✨ Ekstrak AI</button>
+      <div class="row" style="margin-top:10px;justify-content:flex-end">
+        <button class="btn sm" :disabled="busy || !chat.trim()" @click="extract"><AppIcon name="sparkles" :size="15" />Ekstrak AI</button>
       </div>
-      <p v-if="ai" class="lbl" style="margin-top:10px">✨ Terisi otomatis. Periksa &amp; koreksi bila perlu.</p>
+      <p v-if="ai" class="lbl" style="margin-top:10px">Terisi otomatis. Periksa &amp; koreksi bila perlu.</p>
       <template v-for="[k, l, p] in fields" :key="k"><label>{{ l }}</label><input v-model="f[k]" class="pill" :placeholder="p"></template>
       <p v-if="err" class="err">{{ err }}</p>
       <button class="btn" :disabled="busy || !f.nama || !f.item" style="margin-top:18px" @click="save">Simpan Pesanan</button>

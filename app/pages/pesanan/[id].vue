@@ -7,7 +7,7 @@ async function setStatus(s) { busy.value = true; try { await api.setStatus(o.val
 </script>
 <template>
   <div>
-    <div class="top"><NuxtLink to="/riwayat" class="back">←</NuxtLink><h2>Detail Pesanan</h2></div>
+    <div class="top"><NuxtLink to="/riwayat" class="back" aria-label="Kembali"><AppIcon name="arrow-left" :size="20" /></NuxtLink><h2>Detail Pesanan</h2></div>
     <div v-if="o" class="card">
       <div class="row"><b style="font-size:18px">{{ o.nama }}</b><span :class="['chip', 's-' + o.status]">{{ o.status }}</span></div>
       <small>{{ o.no }} · {{ o.alamat }}</small>
