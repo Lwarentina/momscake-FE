@@ -3,17 +3,11 @@ definePageMeta({ layout: false })
 const api = useApi()
 const f = reactive({ username: '', password: '' })
 const err = ref(''), busy = ref(false)
-const debugAccess = useCookie('debug-access', { path: '/' })
-const showDebugAccess = useRuntimeConfig().public.debugAuthBypass
 async function submit() {
   err.value = ''; busy.value = true
   try { await api.login(f.username, f.password); await navigateTo('/') }
   catch { err.value = 'Username atau password salah.' }
   finally { busy.value = false }
-}
-async function enterDebugMode() {
-  debugAccess.value = 'enabled'
-  await navigateTo('/')
 }
 </script>
 <template>
@@ -26,7 +20,6 @@ async function enterDebugMode() {
       <input v-model="f.password" class="pill" type="password" placeholder="Password" autocomplete="current-password" required style="margin-top:14px">
       <p v-if="err" class="err">{{ err }}</p>
       <button class="btn" :disabled="busy" style="width:160px;margin:48px auto 0">{{ busy ? '...' : 'Login' }}</button>
-      <button v-if="showDebugAccess" class="btn" type="button" style="width:100%;margin-top:16px" @click="enterDebugMode">Debug: View Pages Without Login</button>
     </form>
   </div>
 </template>
